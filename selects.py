@@ -65,13 +65,3 @@ def select_10():
     res = session.query(Subjects.subject).select_from(Results).join(Students).join(Subjects).join(Teachers)\
         .filter(and_(Students.id ==27, Teachers.id ==4)).group_by(Subjects.subject).all()
     return res
-if __name__ == '__main__':
-    pprint(select_10())
-
-"""SELECT s2.subject
-FROM results r
-JOIN students s ON s.id =r.student_id
-JOIN subjects s2 ON s2.id =r.subject_id
-JOIN teachers t ON t.id = s2.teacher_id
-WHERE s.id =1 AND t.id = 1  ---or another id`s
-GROUP BY s2.subject"""
